@@ -12,7 +12,7 @@
   export class SupermercadoController {
     constructor(private readonly service: SupermercadoService) {}
     
-        @Get(':id')
+    @Get(':id')
     async findOne(@Param('id') id: string) {
       return await this.service.findOne(id);
     }
