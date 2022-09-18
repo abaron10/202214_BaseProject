@@ -1,17 +1,18 @@
+
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { CiudadEntity } from './ciudad/ciudad.entity';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { SupermercadoEntity } from './supermercado/supermercado.entity';
-import { CiudadEntity } from './ciudad/ciudad.entity';
 import { SupermercadoModule } from './supermercado/supermercado.module';
 import { CiudadSupermercadoModule } from './ciudad-supermercado/ciudad-supermercado.module';
 
 @Module({
   imports: [
-    CiudadModule, 
-    SupermercadoModule, 
+    CiudadModule,
+    SupermercadoModule,
     CiudadSupermercadoModule,
     TypeOrmModule.forRoot({
       type: 'postgres',

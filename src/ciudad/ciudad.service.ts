@@ -35,7 +35,7 @@ export class CiudadService {
   }
 
   async create(ciudad: CiudadEntity): Promise<CiudadEntity> {
-    if (this.paisesValidosCiudad.includes(ciudad.pais)) {
+    if (!this.paisesValidosCiudad.includes(ciudad.pais)) {
       throw new BusinessLogicException(
         this.notValidCountry,
         BusinessError.BAD_REQUEST,
@@ -45,7 +45,7 @@ export class CiudadService {
   }
 
   async update(ciudad: CiudadEntity): Promise<CiudadEntity> {
-    if (this.paisesValidosCiudad.includes(ciudad.pais)) {
+    if (!this.paisesValidosCiudad.includes(ciudad.pais)) {
       throw new BusinessLogicException(
         this.notValidCountry,
         BusinessError.BAD_REQUEST,

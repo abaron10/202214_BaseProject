@@ -17,7 +17,7 @@ export class CiudadEntity {
     pais: string;
 
     @Column()
-    habitantes: number;
+    noHabitantes: number;
 
     @PrimaryGeneratedColumn('uuid')
     id: string;
