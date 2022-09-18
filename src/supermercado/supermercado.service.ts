@@ -42,9 +42,7 @@ export class SupermercadoService {
   }
 
   async update(supermercado: SupermercadoEntity): Promise<SupermercadoEntity> {
-    const persistedSupermarket = await this.supermercadoRepository.findOne({
-      where: { id: `${supermercado.id}` },
-    });
+    const persistedSupermarket = await this.supermercadoRepository.findOne({where: { id: `${supermercado.id}` }});
 
     if (!persistedSupermarket) {
       throw new BusinessLogicException(
@@ -64,16 +62,14 @@ export class SupermercadoService {
   }
 
   async delete(idSupermercado: string) {
-    const existingEntity = await this.supermercadoRepository.findOne({
-      where: { id :`${idSupermercado}` },
-    });
-    if (!existingEntity) {
+    const persistedSupermarket = await this.supermercadoRepository.findOne({where: { id :`${idSupermercado}` }});
+    if (!persistedSupermarket) {
       throw new BusinessLogicException(
         'Supermarket not found.',
         BusinessError.NOT_FOUND,
       );
     }
 
-    await this.supermercadoRepository.delete(existingEntity);
+    await this.supermercadoRepository.delete(persistedSupermarket);
   }
 }

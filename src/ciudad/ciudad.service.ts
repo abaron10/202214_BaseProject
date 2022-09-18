@@ -22,10 +22,7 @@ export class CiudadService {
   }
 
   async findOne(idCity: string): Promise<CiudadEntity> {
-    const ciudad = await this.ciudadRepository.findOne({ 
-        where: { id: `${idCity}` 
-    
-    }});
+    const ciudad = await this.ciudadRepository.findOne({ where: { id: `${idCity}` }});
 
     if (!ciudad) {
         throw new BusinessLogicException(
@@ -55,9 +52,7 @@ export class CiudadService {
       );
     }
 
-    const persistedCity = await this.ciudadRepository.findOne({
-      where: { id: `${ciudad.id}` },
-    });
+    const persistedCity = await this.ciudadRepository.findOne({where: { id: `${ciudad.id}` }});
 
     if (!persistedCity) {
       throw new BusinessLogicException(
@@ -69,9 +64,7 @@ export class CiudadService {
   }
 
   async delete(idCiudad: string) {
-    const persistedCity = await this.ciudadRepository.findOne({
-      where: { id : `${idCiudad}` },
-    });
+    const persistedCity = await this.ciudadRepository.findOne({where: { id : `${idCiudad}` },});
     if (!persistedCity) {
       throw new BusinessLogicException(
         'The city with the given id was not found',
@@ -81,7 +74,5 @@ export class CiudadService {
 
     await this.ciudadRepository.delete(persistedCity);
   }
-
-
 
 }
